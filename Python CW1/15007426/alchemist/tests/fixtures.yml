@@ -1,0 +1,285 @@
+test_two_shelves_entered:
+    - lower: 
+        - A
+        - B
+      upper:
+        - antiA
+        - C
+      shelf3:
+        - D
+        - antiC
+    - lower: 
+        - A
+        - B
+test_string_in_shelves:
+    - lower: 
+       - A
+       - B
+      upper: 
+       - 1
+       - antiB
+    - lower: 
+       - A
+       - B
+       - 1
+      upper: 
+       - antiB
+    - lower: 
+       - A
+       - B
+       - 1
+      upper: 
+       - antiB
+       - 1  
+test_antianti_substances:
+    - lower: 
+       - A
+       - B
+      upper: 
+       - antiantiB
+    - lower: 
+       - antiantiA
+       - B
+      upper: 
+       - antiA
+    - lower: 
+       - A
+       - antiantiB
+      upper: 
+       - antiantiB
+test_empty_shelves:
+    - lower: 
+
+      upper: 
+
+      answer:
+         lower: []
+
+         upper: []
+
+    - lower: 
+       - 
+       - 
+      upper: 
+       - 
+      answer:
+         lower: []
+
+         upper: []
+
+    - lower: 
+       - 
+      upper: 
+       - 
+      answer:
+         lower: []
+
+         upper: []
+
+    - lower: 
+       - 
+       -
+      upper: 
+       -
+       -
+       - 
+      answer:
+        lower: []
+
+        upper: []
+    - lower: 
+       - A
+       - B
+      upper: 
+       
+      answer:
+        lower: [A, B]
+
+        upper: []
+    - lower: 
+
+      upper: 
+       - A
+      answer:
+        lower: []
+
+        upper: [A]
+test_shelves_key:
+    - shelf1:
+       - A
+      upper: 
+       - antiA
+    - lower: 
+       - V
+       - D
+      shelf2: 
+       - hello
+    - shelf1:
+       - element
+      shelf2:
+       - antielement
+test_empty_input:
+    
+test_common_cases:
+    - lower: 
+       - abc
+       - Hpotion
+      upper: 
+       - antiabc
+      answer:
+        lower:
+          - Hpotion
+        upper:
+          []
+    - lower: 
+       - antiApotion
+       - Aluminium
+      upper: 
+       - antiA
+      answer:
+        lower: 
+          - antiApotion
+          - Aluminium
+        upper: 
+          - antiA
+    - lower: 
+       - A
+       - antiB
+       - C
+      upper: 
+       - B
+       - D
+       - C
+      answer:
+         lower:
+           - A
+           - C
+         upper:
+           - D
+           - C
+test_num_reactions:
+    - lower: 
+       - abcdefg
+       - Hpotion
+      upper: 
+       - antiabcdefg
+       - AAA
+      answer:
+         1
+    - lower: 
+       - antiApotion
+       - Aluminium
+      upper: 
+       - antiA
+       - antiB
+      answer:
+         0
+    - lower: 
+       - A
+       - antiB
+       - C
+      upper: 
+       - B
+       - D
+       - antiC
+      answer:
+         2
+test_random_selection:
+    - lower: 
+       - antia
+      upper: 
+       - a
+       - b
+       - a
+       - c
+       - a
+       - d
+       - a
+       - e
+    - lower: 
+       - antitarget
+      upper: 
+       - target
+       - target
+       - a
+       - target
+       - a
+       - d
+       - a
+       - target
+    - lower: 
+       - target
+      upper: 
+       - abccctarget
+       - targetttttt
+       - antitarget
+       - target
+       - a
+       - antitarget
+       - a
+       - antitarget    
+test_can_react:
+    - substance1: antiA
+      substance2: A
+      answer: True
+    - substance1: abcd
+      substance2: abcd
+      answer: False
+    - substance1: antiabcd
+      substance2: antiabcd
+      answer: False
+test_update_shelves:
+      lower: 
+       - abc
+       - antipotionx
+      upper: 
+       - potionx
+       - substanceee
+      answer_lower:
+          - abc
+      answer_upper:
+          - substanceee
+test_do_a_reaction:
+    - lower: 
+       - potionabc
+       - Hpotion
+       - Bpotion
+      upper: 
+       - antiHpotion
+       - potionX
+      answer:
+        lower:
+          - potionabc
+          - Bpotion
+        upper:
+          - potionX
+    - lower: 
+       - potionabc
+       - Hpotion
+       - Bpotion
+      upper: 
+       - Hpotion
+       - potionX
+      answer:
+          lower: 
+            - potionabc
+            - Hpotion
+            - Bpotion
+          upper: 
+            - Hpotion
+            - potionX
+    - lower: 
+       - antipotionabc
+       - Hpotion
+       - Bpotion
+      upper: 
+       - antiHpotion
+       - potionX
+       - potionabc
+      answer:
+          lower: 
+            - Hpotion
+            - Bpotion
+          upper: 
+            - antiHpotion
+            - potionX
